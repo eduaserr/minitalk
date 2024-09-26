@@ -1,21 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minitalk.h                                         :+:      :+:    :+:   */
+/*   client.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eduaserr < eduaserr@student.42malaga.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/25 13:31:08 by eduaserr          #+#    #+#             */
-/*   Updated: 2024/09/26 16:59:16 by eduaserr         ###   ########.fr       */
+/*   Created: 2024/09/25 17:42:06 by eduaserr          #+#    #+#             */
+/*   Updated: 2024/09/26 16:58:15 by eduaserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINITALK_H
-# define MINITALK_H
-
-# include <limits.h>
-# include <signal.h>
-# include "../../lib/libft.h"
 # include "../../inc/minitalk.h"
 
-#endif
+__sighandler_t	*signal_handler()
+{
+	if (2 == 2)
+		printf("2");
+	return (0);
+}
+
+int main()
+{
+	signal(SIGUSR1, *signal_handler());
+}
