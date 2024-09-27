@@ -1,42 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   client.c                                           :+:      :+:    :+:   */
+/*   client_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eduaserr < eduaserr@student.42malaga.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/25 17:42:06 by eduaserr          #+#    #+#             */
-/*   Updated: 2024/09/27 18:13:37 by eduaserr         ###   ########.fr       */
+/*   Created: 2024/09/27 17:54:56 by eduaserr          #+#    #+#             */
+/*   Updated: 2024/09/27 18:23:15 by eduaserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minitalk.h"
 
-void	get_binary(char *str, int pid)
+int	process_input(int argc, char **argv)
 {
-	int	i;
+	int		i;
 
 	i = 0;
-	int pid1;
-	pid1 = pid;
-	if (str[i])
+	if (argc != 3)
 	{
-		ft_printf("binary input");
-	}
-}
-
-int main(int argc, char **argv)
-{
-	int		pid;
-	char	*message;
-
-	message = NULL;
-	if (process_input(argc, argv) == 0)
+		ft_printf("\x1b[31minvalid format!\n\033[0m");
+		ft_printf("You must introduce : %s <PID> 'message to send'\n", argv[0]);
 		return (0);
-	pid = ft_atoi(argv[1]);
-	ft_printf("PID received : %d\n", pid);
-	message = argv[2];
-	ft_printf("message to send : %s\n", message);
-	//get_binary(message, pid);
-	kill(pid, SIGUSR1);
+	}
+	while (argv[1][i])
+	{
+		if (!ft_isdigit(argv[1][i]))
+		{
+			ft_printf("\x1b[31minvalid format!\n\033[0m");
+			ft_printf("PID must only contains numbers\n");
+			return (0);
+		}
+		i++;
+	}
+	if (i != 7)
+		return (ft_printf("invalid PID"), 0);
+	return (1);
 }

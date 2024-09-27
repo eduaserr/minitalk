@@ -6,7 +6,7 @@
 /*   By: eduaserr < eduaserr@student.42malaga.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 13:31:08 by eduaserr          #+#    #+#             */
-/*   Updated: 2024/09/26 16:59:16 by eduaserr         ###   ########.fr       */
+/*   Updated: 2024/09/27 18:13:52 by eduaserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 
 # include <limits.h>
 # include <signal.h>
-# include "../../lib/libft.h"
-# include "../../inc/minitalk.h"
+# include "../lib/libft.h"
+
+int	process_input(int argc, char **argv);
 
 #endif
