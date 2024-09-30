@@ -6,22 +6,30 @@
 /*   By: eduaserr < eduaserr@student.42malaga.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 17:42:06 by eduaserr          #+#    #+#             */
-/*   Updated: 2024/09/27 18:13:37 by eduaserr         ###   ########.fr       */
+/*   Updated: 2024/09/30 17:25:58 by eduaserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minitalk.h"
 
-void	get_binary(char *str, int pid)
+void	send_bits(char *str, int pid)
 {
 	int	i;
+	int	bit;
 
-	i = 0;
-	int pid1;
-	pid1 = pid;
-	if (str[i])
+	i = -1;
+	while (str[++i])
 	{
-		ft_printf("binary input");
+		bit = 7;
+		while (bit >= 0)
+		{
+			if (str[i] & (1 << bit))
+				kill(pid, SIGUSR2);
+			else
+				kill(pid, SIGUSR1);
+			usleep(42);
+			bit--;
+		}
 	}
 }
 
@@ -37,6 +45,6 @@ int main(int argc, char **argv)
 	ft_printf("PID received : %d\n", pid);
 	message = argv[2];
 	ft_printf("message to send : %s\n", message);
-	//get_binary(message, pid);
-	kill(pid, SIGUSR1);
+	send_bits(message, pid);
+	signal();
 }

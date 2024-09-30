@@ -6,7 +6,7 @@
 /*   By: eduaserr < eduaserr@student.42malaga.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 18:56:06 by eduaserr          #+#    #+#             */
-/*   Updated: 2024/09/27 15:04:07 by eduaserr         ###   ########.fr       */
+/*   Updated: 2024/09/30 16:30:48 by eduaserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ int main()
 
 	pid = getpid();
 	ft_printf("PID : %d\n", pid);
+	kill(pid, SIGUSR1);
 	kill(pid, SIGUSR2);
-	//signal()
+	sigaction();
 }
