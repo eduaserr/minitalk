@@ -6,7 +6,7 @@
 /*   By: eduaserr < eduaserr@student.42malaga.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 17:42:06 by eduaserr          #+#    #+#             */
-/*   Updated: 2024/09/30 17:25:58 by eduaserr         ###   ########.fr       */
+/*   Updated: 2024/10/01 16:28:25 by eduaserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	send_bits(char *str, int pid)
 				kill(pid, SIGUSR2);
 			else
 				kill(pid, SIGUSR1);
-			usleep(42);
+			usleep(100);
 			bit--;
 		}
 	}
@@ -36,15 +36,10 @@ void	send_bits(char *str, int pid)
 int main(int argc, char **argv)
 {
 	int		pid;
-	char	*message;
 
-	message = NULL;
 	if (process_input(argc, argv) == 0)
 		return (0);
 	pid = ft_atoi(argv[1]);
-	ft_printf("PID received : %d\n", pid);
-	message = argv[2];
-	ft_printf("message to send : %s\n", message);
-	send_bits(message, pid);
-	signal();
+	send_bits(argv[2], pid);
+	return (0);
 }
