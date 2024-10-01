@@ -6,7 +6,7 @@
 /*   By: eduaserr < eduaserr@student.42malaga.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 18:56:06 by eduaserr          #+#    #+#             */
-/*   Updated: 2024/10/01 20:05:49 by eduaserr         ###   ########.fr       */
+/*   Updated: 2024/10/01 20:11:25 by eduaserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,13 @@ void	signal_handler(int signal)
 		chr |= 1;
 	bit++;
 	if (bit == 8)
+	{
 		ft_printf("%c", chr);
+		chr = 0;
+		bit = 0;
+	}
 	else
 		chr <<= 1;
-	chr = 0;
-	bit = 0;
 }
 
 int	main()
