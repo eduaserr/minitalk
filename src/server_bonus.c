@@ -1,45 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   client.c                                           :+:      :+:    :+:   */
+/*   server_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eduaserr < eduaserr@student.42malaga.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/25 17:42:06 by eduaserr          #+#    #+#             */
-/*   Updated: 2024/10/01 19:58:27 by eduaserr         ###   ########.fr       */
+/*   Created: 2024/10/01 17:57:42 by eduaserr          #+#    #+#             */
+/*   Updated: 2024/10/01 20:01:48 by eduaserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minitalk.h"
 
-void	send_bits(char *str, int pid)
+void	signal_handler(int signal)
 {
-	int	i;
-	int	bit;
+	static char	chr;
+	static int	bit;
 
-	i = -1;
-	while (str[++i])
+	if (signal == SIGUSR2)
+		chr |= 1;
+	bit++;
+	if (bit == 8)
 	{
-		bit = 7;
-		while (bit >= 0)
-		{
-			if (str[i] & (1 << bit))
-				kill(pid, SIGUSR2);
-			else
-				kill(pid, SIGUSR1);
-			usleep(100);
-			bit--;
-		}
+		ft_printf("%c", chr);
+		chr = 0;
+		bit = 0;
 	}
+	else
+		chr <<= 1;
 }
 
-int main(int argc, char **argv)
+int	main()
 {
-	int		pid;
+	pid_t	pid;
 
-	if (process_input(argc, argv) == 0)
-		return (0);
-	pid = ft_atoi(argv[1]);
-	send_bits(argv[2], pid);
+	pid = getpid();
+	ft_printf("PID : %d\n", pid);
+	ft_printf("\033[5m\033[90mtok tok...\033[0m\n");
+	signal(SIGUSR1, signal_handler);
+	signal(SIGUSR2, signal_handler);
+	while (1)
+		pause();
 	return (0);
 }
