@@ -6,7 +6,7 @@
 /*   By: eduaserr < eduaserr@student.42malaga.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 17:42:06 by eduaserr          #+#    #+#             */
-/*   Updated: 2024/10/01 19:58:27 by eduaserr         ###   ########.fr       */
+/*   Updated: 2024/10/02 17:16:11 by eduaserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ void	send_bits(char *str, int pid)
 	int	i;
 	int	bit;
 
-	i = -1;
-	while (str[++i])
+	i = 0;
+	while (str[i])
 	{
 		bit = 7;
 		while (bit >= 0)
@@ -27,9 +27,10 @@ void	send_bits(char *str, int pid)
 				kill(pid, SIGUSR2);
 			else
 				kill(pid, SIGUSR1);
-			usleep(100);
+			usleep(300);
 			bit--;
 		}
+		i++;
 	}
 }
 

@@ -6,7 +6,7 @@
 /*   By: eduaserr < eduaserr@student.42malaga.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 18:56:06 by eduaserr          #+#    #+#             */
-/*   Updated: 2024/10/01 20:11:25 by eduaserr         ###   ########.fr       */
+/*   Updated: 2024/10/02 16:59:17 by eduaserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	signal_handler(int signal)
 	static int	bit;
 
 	if (signal == SIGUSR2)
-		chr |= 1;
+		chr |= (1 << (7 - bit));
 	bit++;
 	if (bit == 8)
 	{
@@ -26,8 +26,6 @@ void	signal_handler(int signal)
 		chr = 0;
 		bit = 0;
 	}
-	else
-		chr <<= 1;
 }
 
 int	main()
