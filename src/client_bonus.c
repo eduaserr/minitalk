@@ -6,18 +6,26 @@
 /*   By: eduaserr < eduaserr@student.42malaga.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 17:56:31 by eduaserr          #+#    #+#             */
-/*   Updated: 2024/10/03 19:17:56 by eduaserr         ###   ########.fr       */
+/*   Updated: 2024/10/03 20:58:06 by eduaserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minitalk.h"
 
+volatile sig_atomic_t	g_received_signal;
+
 void	ft_confirmation_signal(int signal)
 {
 	if (signal == SIGUSR1)
+	{
+		g_received_signal = 1;
 		ft_printf("bit received : 0\n");
+	}
 	if (signal == SIGUSR2)
+	{
+		g_received_signal = 1;
 		ft_printf("bit received : 1\n");
+	}
 }
 
 void	ft_send_bits(char *str, int pid)
@@ -31,11 +39,13 @@ void	ft_send_bits(char *str, int pid)
 		bit = 7;
 		while (bit >= 0)
 		{
+			g_received_signal = 0;
 			if (str[i] & (1 << bit))
 				kill(pid, SIGUSR2);
 			else
 				kill(pid, SIGUSR1);
-			usleep(100);
+			while (g_received_signal == 0)
+				;
 			bit--;
 		}
 	}
