@@ -6,13 +6,13 @@
 /*   By: eduaserr < eduaserr@student.42malaga.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 17:56:31 by eduaserr          #+#    #+#             */
-/*   Updated: 2024/10/02 20:27:05 by eduaserr         ###   ########.fr       */
+/*   Updated: 2024/10/03 17:40:49 by eduaserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minitalk.h"
 
-void	confirmation_signal(int signal)
+void	ft_confirmation_signal(int signal)
 {
 	if (signal == SIGUSR1)
 		ft_printf("bit received : 0\n");
@@ -20,7 +20,7 @@ void	confirmation_signal(int signal)
 		ft_printf("bit received : 1\n");
 }
 
-void	send_bits(char *str, int pid)
+void	ft_send_bits(char *str, int pid)
 {
 	int	i;
 	int	bit;
@@ -32,16 +32,10 @@ void	send_bits(char *str, int pid)
 		while (bit >= 0)
 		{
 			if (str[i] & (1 << bit))
-			{
 				kill(pid, SIGUSR2);
-				pause();
-			}
 			else
-			{
 				kill(pid, SIGUSR1);
-				pause();
-			}
-			usleep(300);
+			usleep(100);
 			bit--;
 		}
 	}
@@ -51,11 +45,11 @@ int main(int argc, char **argv)
 {
 	int		pid;
 
-	if (process_input(argc, argv) == 0)
+	if (ft_process_input(argc, argv) == 0)
 		return (0);
 	pid = ft_atoi(argv[1]);
-	signal(SIGUSR1, confirmation_signal);
-	signal(SIGUSR2, confirmation_signal);
-	send_bits(argv[2], pid);
+	signal(SIGUSR1, ft_confirmation_signal);
+	signal(SIGUSR2, ft_confirmation_signal);
+	ft_send_bits(argv[2], pid);
 	return (0);
 }

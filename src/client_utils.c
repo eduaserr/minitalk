@@ -6,13 +6,13 @@
 /*   By: eduaserr < eduaserr@student.42malaga.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 17:54:56 by eduaserr          #+#    #+#             */
-/*   Updated: 2024/10/01 14:21:03 by eduaserr         ###   ########.fr       */
+/*   Updated: 2024/10/03 17:23:59 by eduaserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minitalk.h"
 
-int	process_input(int argc, char **argv)
+int	ft_process_input(int argc, char **argv)
 {
 	int		i;
 

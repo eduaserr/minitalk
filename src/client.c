@@ -6,13 +6,13 @@
 /*   By: eduaserr < eduaserr@student.42malaga.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 17:42:06 by eduaserr          #+#    #+#             */
-/*   Updated: 2024/10/02 17:16:11 by eduaserr         ###   ########.fr       */
+/*   Updated: 2024/10/03 18:05:03 by eduaserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minitalk.h"
 
-void	send_bits(char *str, int pid)
+void	ft_send_bits(char *str, int pid)
 {
 	int	i;
 	int	bit;
@@ -27,7 +27,7 @@ void	send_bits(char *str, int pid)
 				kill(pid, SIGUSR2);
 			else
 				kill(pid, SIGUSR1);
-			usleep(300);
+			usleep(42);
 			bit--;
 		}
 		i++;
@@ -38,9 +38,9 @@ int main(int argc, char **argv)
 {
 	int		pid;
 
-	if (process_input(argc, argv) == 0)
+	if (ft_process_input(argc, argv) == 0)
 		return (0);
 	pid = ft_atoi(argv[1]);
-	send_bits(argv[2], pid);
+	ft_send_bits(argv[2], pid);
 	return (0);
 }

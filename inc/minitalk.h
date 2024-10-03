@@ -6,7 +6,7 @@
 /*   By: eduaserr < eduaserr@student.42malaga.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 13:31:08 by eduaserr          #+#    #+#             */
-/*   Updated: 2024/10/02 18:18:44 by eduaserr         ###   ########.fr       */
+/*   Updated: 2024/10/03 17:24:07 by eduaserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,6 @@
 # include <signal.h>
 # include "../lib/libft.h"
 
-int	process_input(int argc, char **argv);
+int	ft_process_input(int argc, char **argv);
 
 #endif
