@@ -6,7 +6,7 @@
 /*   By: eduaserr < eduaserr@student.42malaga.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 18:56:06 by eduaserr          #+#    #+#             */
-/*   Updated: 2024/10/03 16:17:22 by eduaserr         ###   ########.fr       */
+/*   Updated: 2024/10/03 19:18:18 by eduaserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	signal_handler(int signal)
 	}
 }
 
-int	main()
+int	main(void)
 {
 	pid_t	pid;
 

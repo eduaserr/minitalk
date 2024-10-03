@@ -6,7 +6,7 @@
 /*   By: eduaserr < eduaserr@student.42malaga.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 17:57:42 by eduaserr          #+#    #+#             */
-/*   Updated: 2024/10/03 17:20:57 by eduaserr         ###   ########.fr       */
+/*   Updated: 2024/10/03 19:18:09 by eduaserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	ft_signal_handler(int signal, siginfo_t *info, void *ucontext)
 	}
 }
 
-int	main()
+int	main(void)
 {
 	pid_t				pid;
 	struct sigaction	sa;

@@ -6,7 +6,7 @@
 /*   By: eduaserr < eduaserr@student.42malaga.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 17:56:31 by eduaserr          #+#    #+#             */
-/*   Updated: 2024/10/03 17:40:49 by eduaserr         ###   ########.fr       */
+/*   Updated: 2024/10/03 19:17:56 by eduaserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	ft_send_bits(char *str, int pid)
 	}
 }
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
 	int		pid;
 
