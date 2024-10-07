@@ -6,7 +6,7 @@
 /*   By: eduaserr < eduaserr@student.42malaga.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 18:56:06 by eduaserr          #+#    #+#             */
-/*   Updated: 2024/10/03 20:38:18 by eduaserr         ###   ########.fr       */
+/*   Updated: 2024/10/07 22:20:45 by eduaserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,6 @@ int	main(void)
 	signal(SIGUSR1, signal_handler);
 	signal(SIGUSR2, signal_handler);
 	while (1)
-		;
+		pause();
 	return (0);
 }

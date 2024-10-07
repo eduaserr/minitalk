@@ -6,7 +6,7 @@
 /*   By: eduaserr < eduaserr@student.42malaga.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 17:56:31 by eduaserr          #+#    #+#             */
-/*   Updated: 2024/10/03 20:58:06 by eduaserr         ###   ########.fr       */
+/*   Updated: 2024/10/07 21:55:13 by eduaserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,11 @@ volatile sig_atomic_t	g_received_signal;
 
 void	ft_confirmation_signal(int signal)
 {
+	g_received_signal = 1;
 	if (signal == SIGUSR1)
-	{
-		g_received_signal = 1;
-		ft_printf("bit received : 0\n");
-	}
+		write(1, "bit received : 0\n", 17);
 	if (signal == SIGUSR2)
-	{
-		g_received_signal = 1;
-		ft_printf("bit received : 1\n");
-	}
+		write(1, "bit received : 1\n", 17);
 }
 
 void	ft_send_bits(char *str, int pid)
@@ -41,11 +36,16 @@ void	ft_send_bits(char *str, int pid)
 		{
 			g_received_signal = 0;
 			if (str[i] & (1 << bit))
-				kill(pid, SIGUSR2);
+			{
+				if (kill(pid, SIGUSR2) < 0)
+					ft_validate_signals(pid);
+			}
 			else
-				kill(pid, SIGUSR1);
+				if (kill(pid, SIGUSR1) < 0)
+					ft_validate_signals(pid);
 			while (g_received_signal == 0)
-				;
+				pause();
+			usleep(250);
 			bit--;
 		}
 	}
@@ -55,7 +55,7 @@ int	main(int argc, char **argv)
 {
 	int		pid;
 
-	if (ft_process_input(argc, argv) == 0)
+	if (ft_process_input(argc, argv) == 1)
 		return (0);
 	pid = ft_atoi(argv[1]);
 	signal(SIGUSR1, ft_confirmation_signal);
