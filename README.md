@@ -53,7 +53,7 @@ For compilation, you can use the Makefile by typing `make` followed by the desir
 
 Original Functions|Description
 :----------------:|:----------
-`ft_send_bits`|Sends a string bit by bit to a specified PID using signals.
-`main` (sender)|Processes input, retrieves the PID, and sends the bits of the given string.
-`signal_handler`|Handles incoming signals and reconstructs the original message character by character.
-`main` (receiver)|Initializes the receiver process, sets up signal handling, and waits for incoming signals.
+[`ft_send_bits`](https://github.com/eduaserr/minitalk/blob/main/src/client_bonus.c)|Sends a string bit by bit to a specified PID using signals.
+[`main`](https://github.com/eduaserr/minitalk/blob/main/src/client_bonus.c) (sender)|Processes input, retrieves the PID, and sends the bits of the given string.
+[`signal_handler`](https://github.com/eduaserr/minitalk/blob/main/src/server_bonus.c)|Handles incoming signals and reconstructs the original message character by character.
+[`main`](https://github.com/eduaserr/minitalk/blob/main/src/server_bonus.c) (receiver)|Initializes the receiver process, sets up signal handling, and waits for incoming signals.
