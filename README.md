@@ -57,3 +57,6 @@ Original Functions|Description
 [`main`](https://github.com/eduaserr/minitalk/blob/main/src/client_bonus.c) (sender)|Processes input, retrieves the PID, and sends the bits of the given string.
 [`signal_handler`](https://github.com/eduaserr/minitalk/blob/main/src/server_bonus.c)|Handles incoming signals and reconstructs the original message character by character.
 [`main`](https://github.com/eduaserr/minitalk/blob/main/src/server_bonus.c) (receiver)|Initializes the receiver process, sets up signal handling, and waits for incoming signals.
+
+---
+*Proyecto desarrollado como parte del curriculum de 42.*
